@@ -34,7 +34,7 @@
 			<version>2.28</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-multipart -->
-		<! --		
+		<!-- Comment double dependency (idem L31 to L35)		
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-multipart</artifactId>
