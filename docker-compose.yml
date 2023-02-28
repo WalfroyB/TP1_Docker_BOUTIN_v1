@@ -1,0 +1,44 @@
+# L'argument version permet de spécifier à Docker Compose quelle version on souhaite utiliser  (dans mon cas, j'ai effectuer un >docker compose version pour trouver ma version qui est v2.15.1
+version: '2.15.1'
+# Je définis la liste des services (ou conteneurs) que je veux faire tourner dans le cadre de mon application.
+services:
+  # Conteneur 1 - Reverse proxy 
+  reverse-proxy:
+    image: jwilder/nginx-proxy
+    container_name: NGINX_reverse-proxy
+    restart: always
+    ports:
+      - target: 80
+        published: 8080 
+        protocol: tcp
+        mode: ingress
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+  #Conteneur 2 - NGINX_webserver1
+  NGINX_webserver1:
+    image: nginx
+    container_name: NGINX_webserver1
+    environment:
+      VIRTUAL_HOST: m
+
+  #Conteneur 3 - NGINX_webserver2
+  NGINX_webserver2:
+    image: nginx
+    container_name: NGINX_webserver2
+    environment:
+      VIRTUAL_HOST: m
+
+  #Conteneur 4 - NGINX_webserver3
+  NGINX_webserver3:
+    image: nginx
+    container_name: NGINX_webserver3
+    environment:
+      VIRTUAL_HOST: m
+
+  #Conteneur 5 - NGINX_webserver4
+  NGINX_webserver4:
+    image: nginx
+    container_name: NGINX_webserver4
+    environment:
+      VIRTUAL_HOST: m
